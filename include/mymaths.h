@@ -1,3 +1,6 @@
+#ifndef MYMATHS_H
+#define MYMATHS_H
+
 class Vector2
 {
 private:
@@ -194,9 +197,9 @@ bool CheckPointBox(Point2D p, Box2D b)
 	return false;
 }
 
-bool CheckLineLine(Line2D l1, Line2D l2)
+bool CheckLineLine(Line2D l1, Line2D l2)				//DO SOON - NEEDED FOR ACCURACY
 {
-	return false;											//DO THIS NEXT FOR REUSABILITY
+	return false;
 }
 
 bool CheckBoxBox(Box2D b1, Box2D b2)
@@ -205,3 +208,5 @@ bool CheckBoxBox(Box2D b1, Box2D b2)
 		return true;
 	return false;
 }
+
+#endif
