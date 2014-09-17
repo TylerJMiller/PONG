@@ -326,7 +326,8 @@ public:
 	}
 	void Reverse()
 	{
-		speedy *= -1;
+		speedy *= -1.05;
+		speedx *= 1.05;
 	}
 	float GetSpeedY()
 	{

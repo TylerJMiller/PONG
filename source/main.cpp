@@ -1,14 +1,15 @@
 ﻿#include "AIE.h"
 #include <iostream>
 #include "Pongstuff.h"
-
+#include <cmath>
 //GLOBALS 
 float fTime;
 const int screenWidth = 600, screenHeight = 400;
-void UpdateMainMenu(), LoadGame(), UpdateGameState(), EndGame();
-int score1 = 0, score2 = 0;
+void UpdateMainMenu(), LoadGame(), UpdateGameState(), EndGame(), errytime();
+int score1 = 8, score2 = 8;
 char *wintext;
 bool displayscores = false;
+float endtime = 0;
 enum GAMESTATES
 {
 	MENU,
@@ -29,11 +30,9 @@ int main( int argc, char* argv[] )
     //Game Loop
     do
     {
-        ClearScreen();
-		fTime = GetDeltaTime();
 		if (IsKeyDown(GLFW_KEY_ESCAPE))
 			return 0;
-		SetFont("./fonts/arial.fnt");
+		errytime();
 		switch (CurrentState)
 		{
 		case MENU:
@@ -56,6 +55,13 @@ int main( int argc, char* argv[] )
     Shutdown();
 	
     return 0;
+}
+void errytime()
+{
+	ClearScreen();
+	fTime = GetDeltaTime();
+
+	SetFont("./fonts/arial.fnt");
 }
 void UpdateMainMenu()
 {
@@ -175,5 +181,16 @@ void UpdateGameState()
 
 void EndGame()
 {
+	char countDown[3];
+	endtime += fTime;
+	itoa(9 - (int)endtime, countDown, 10);
+	if (endtime > 10)
+	{
+		score1 = 0;
+		score2 = 0;
+		endtime = 0;
+		CurrentState = MENU;
+	}
+	DrawString(countDown, 0.5f * screenWidth, 0.3f * screenHeight);
 	DrawString(wintext, 0.3f * screenWidth, 0.5f * screenHeight);
 }
