@@ -2,20 +2,25 @@
 #include <iostream>
 #include "Pongstuff.h"
 #include <cmath>
+
+using namespace std;
+
 //GLOBALS 
 float fTime;
 const int screenWidth = 600, screenHeight = 400;
-void UpdateMainMenu(), LoadGame(), UpdateGameState(), EndGame(), errytime();
+void UpdateMainMenu(), LoadGame(), UpdateGameState(), EndGame(), errytime(), QuitGame();
 int score1 = 8, score2 = 8;
 char *wintext;
 bool displayscores = false;
 float endtime = 0;
+bool quitShit = false;
 enum GAMESTATES
 {
 	MENU,
 	LOADGAME,
 	GAME,
-	END
+	END,
+	QUIT
 };
 GAMESTATES CurrentState = MENU;
 
@@ -30,7 +35,7 @@ int main( int argc, char* argv[] )
     //Game Loop
     do
     {
-		if (IsKeyDown(GLFW_KEY_ESCAPE))
+		if (IsKeyDown(GLFW_KEY_ESCAPE) || quitShit)
 			return 0;
 		errytime();
 		switch (CurrentState)
@@ -46,6 +51,9 @@ int main( int argc, char* argv[] )
 			break;
 		case END:
 			EndGame();
+			break;
+		case QUIT:
+			QuitGame();
 			break;
 		default:
 			break;
@@ -75,7 +83,7 @@ void UpdateMainMenu()
 	if (IsKeyDown(GLFW_KEY_F))
 	{
 		wintext = "NOBODY WINS";
-		CurrentState = END;
+		CurrentState = QUIT;
 	}
 }
 
@@ -183,8 +191,14 @@ void EndGame()
 {
 	char countDown[3];
 	endtime += fTime;
+	char scoreone[2], scoretwo[2];
+	itoa(score1, scoreone, 10);
+	itoa(score2, scoretwo, 10);
+	DrawString(scoreone, 280, 0.6f * screenHeight, SColour(255, 255, 255, 255));
+	DrawString("_", 300, 0.63f * screenHeight, SColour(255, 255, 255, 255));
+	DrawString(scoretwo, 320, 0.6f * screenHeight, SColour(255, 255, 255, 255));
 	itoa(9 - (int)endtime, countDown, 10);
-	if (endtime > 10)
+	if (endtime > 5)
 	{
 		score1 = 0;
 		score2 = 0;
@@ -192,5 +206,18 @@ void EndGame()
 		CurrentState = MENU;
 	}
 	DrawString(countDown, 0.5f * screenWidth, 0.3f * screenHeight);
+}
+
+void QuitGame()
+{
+
 	DrawString(wintext, 0.3f * screenWidth, 0.5f * screenHeight);
+	char countDown[3];
+	endtime += fTime;
+	itoa(5 - (int)endtime, countDown, 10);
+	if (endtime > 5)
+	{
+		quitShit = true;
+	}
+	DrawString(countDown, 0.5f * screenWidth, 0.3f * screenHeight);
 }
