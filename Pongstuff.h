@@ -10,6 +10,7 @@ private:
 	float x;
 	float y;
 public:
+	//DECLARING DEFAULTS AND OVERLOADS
 	Vector();
 	Vector(float, float);
 	void Set(float ax, float ay)
@@ -17,6 +18,8 @@ public:
 		x = ax;
 		y = ay;
 	}
+
+	//GETTING VALUES
 	float GetX()
 	{
 		return x;
@@ -43,13 +46,16 @@ private:
 	float x;
 	float y;
 public:
+	//CONSTRUCTORS
 	Point();
 	Point(float, float);
+	//SETTING VALUES
 	void Set(float ax, float ay)
 	{
 		x = ax;
 		y = ay;
 	}
+	//GETTING VALUES
 	float GetX()
 	{
 		return x;
@@ -74,9 +80,10 @@ private:
 	float X2;
 	float Y2;
 public:
-
+	//CONSTRUCTORS
 	Line();
 	Line(Point, Point);
+	//SETTING VALUES
 	void Set(float startx, float starty, float endx, float endy)
 	{
 		X1 = startx;
@@ -84,13 +91,14 @@ public:
 		X2 = endx;
 		Y2 = endy;
 	}
-	void Set(Point a_point1, Point a_point2)
+	void Set(Point a_point1, Point a_point2)//SET OVERLOAD USING POINT CLASS
 	{
 		X1 = a_point1.GetX();
 		Y1 = a_point1.GetY();
 		X2 = a_point2.GetX();
 		Y2 = a_point2.GetY();
 	}
+	//GETTING VALUES
 	float GetLength()
 	{
 		return (((X2 - X1) * (X2 - X1)) + ((Y2 - Y1) * (Y2 - Y1)));
@@ -103,7 +111,7 @@ public:
 	{
 		return (Y2 - Y1);
 	}
-	Vector GetVector()
+	Vector GetVector()//GETTING LINE AS VECTOR (FOR SOME REASON)
 	{
 		Vector v(GetLengthX(), GetLengthY());
 		return v;
@@ -127,16 +135,26 @@ private:
 	float X2;
 	float Y2;
 public:
-	Box(void);
+	//CONSTRUCTORS
+	Box();
 	Box(Point, Point);
 	Box(float, float, float, float);
-	void Set(Point p1, Point p2)
+	//SETTING VALUES
+	void Set(float ax, float ay, float ax2, float ay2)
+	{
+		X1 = ax;
+		Y1 = ay;
+		X2 = ax2;
+		Y2 = ay2;
+	}
+	void Set(Point p1, Point p2) //SET OVERLOAD USING POINTS
 	{
 		X1 = p1.GetX();
 		Y1 = p1.GetY();
 		X2 = p2.GetX();
 		Y2 = p2.GetY();
 	}
+	//GETTING VALUES
 	Point GetLeftBot()
 	{
 		Point p(X1, Y1);
@@ -218,148 +236,150 @@ bool CheckBoxBox(Box b1, Box b2)		//BOX-BOX COLLISION - ONLY CHECKS POINTS NOT L
 	return false;
 }
 
+//PLAYERS CLASS
 class PLAYERBAR
 {
 private:
 	float x, y, speed, height, width, leftbound, rightbound;
 	unsigned int sprite, moveLeft, moveRight;
 public:
-	void SetBound(float al, float ar)
+	void SetBound(float al, float ar)//SETTING X BOUNDARIES
 	{
 		leftbound = al;
 		rightbound = ar;
 	}
-	void SetKeys(unsigned int aleft, unsigned int aright)
+	void SetKeys(unsigned int aleft, unsigned int aright)//SETTING X MOVEMENT KEYS
 	{
 		moveLeft = aleft;
 		moveRight = aright;
 	}
-	float GetWidth()
+	float GetWidth()//GETTING SPRITE/COLLISION WIDTH
 	{
 		return width;
 	}
-	float GetHeight()
+	float GetHeight()//GETTING SPRITE/COLLISION HEIGHT
 	{
 		return height;
 	}
-	void SetSize(float awidth, float aheight)
+	void SetSize(float awidth, float aheight)//SETTING SIZE
 	{
 		height = aheight;
 		width = awidth;
 	}
-	void SetSprite(unsigned int asprite)
+	void SetSprite(unsigned int asprite)//SETTING SPRITE ID
 	{
 		sprite = asprite;
 	}
-	unsigned int GetSprite()
+	unsigned int GetSprite()//GETTING SPRITE ID
 	{
 		return sprite;
 	}
-	float GetX()
+	float GetX()//GETTING X LOCATION
 	{
 		return x;
 	}
-	float GetY()
+	float GetY()//GETTING Y LOCATION
 	{
 		return y;
 	}
-	void SetLoc(float ax, float ay)
+	void SetLoc(float ax, float ay)//SETTING LOCATION
 	{
 		x = ax;
 		y = ay;
 	}
-	void SetSpeed(float a)
+	void SetSpeed(float a)//SETTING X SPEED
 	{
 		speed = a;
 	}
-	void Move(float aTime)
+	void Move(float aTime)//MOVEMENT LOGIC
 	{
 		if (IsKeyDown(moveLeft) && x > leftbound)
 			x -= (speed * aTime);
 		if (IsKeyDown(moveRight) && x < rightbound)
 			x += (speed * aTime);
 	}
-	Box GetBox()
+	Box GetBox()//GETTING BOX FOR COLLISION
 	{
 		Box b(x - (.5f * width), y - (.5f * height), x + (.5f * width), y + (.5f * height));
 		return b;
 	}
 };
 
+//BALL CLASS
 class BALL
 {
 private:
 	float x, y, height, width, speedx, speedy, leftbound, rightbound;
 	unsigned int sprite;
 public:
-	float GetWidth()
+	float GetWidth()//GETTING SPRITE/COLLISION WIDTH
 	{
 		return width;
 	}
-	float GetHeight()
+	float GetHeight()//GETTING SPRITE/COLLISION HEIGHT
 	{
 		return height;
 	}
-	void SetSize(float awidth, float aheight)
+	void SetSize(float awidth, float aheight)//SETTING SPRITE/COLLISION SIZE
 	{
 		height = aheight;
 		width = awidth;
 	}
-	void SetSprite(unsigned int asprite)
+	void SetSprite(unsigned int asprite)//SETTING SPRITE ID
 	{
 		sprite = asprite;
 	}
-	unsigned int GetSprite()
+	unsigned int GetSprite()//GETTING SPRITE ID
 	{
 		return sprite;
 	}
-	void SetBound(float al, float ar)
+	void SetBound(float al, float ar)//SETTING X MOVEMENT BOUNDARIES
 	{
 		leftbound = al;
 		rightbound = ar;
 	}
-	float GetX()
+	float GetX()//GETTING X LOCATION
 	{
 		return x;
 	}
-	float GetY()
+	float GetY()//GETTING Y LOCATION
 	{
 		return y;
 	}
-	void SetLoc(float ax, float ay)
+	void SetLoc(float ax, float ay)//SETTING LOCATION
 	{
 		x = ax;
 		y = ay;
 	}
-	void SetSpeed(float ax, float ay)
+	void SetSpeed(float ax, float ay)//SETTING SPEED
 	{
 		speedx = ax;
 		speedy = ay;
 	}
-	Vector GetSpeed()
+	Vector GetSpeed()//GETTING SPEED AS VECTOR
 	{
 		Vector va(speedx, speedy);
 		return va;
 	}
-	void Reverse()
+	void Reverse()//REVERSING DIRECTION AND INCREASING SPEED
 	{
 		speedy *= -1.05;
 		speedx *= 1.05;
 	}
-	float GetSpeedY()
+	float GetSpeedY()//GETTING Y SPEED
 	{
 		return speedy;
 	}
-	float LengthSpeed()
+	float LengthSpeed()//HOW MUCH IT MOVES AT THE CURRENT SPEED - USED FOR HIGH SCORE
 	{
-		return sqrt((speedx * speedx) + (speedy * speedy));
+		return GetSpeed().Length();
 	}
-	Box GetBox()
+	Box GetBox()//RETURNS A BOX CLASS WITH FOUR FLOATS
 	{
 		Box b(x - (.5f * width), y - (.5f * height), x + (.5f * width), y + (.5f * height));
 		return b;
 	}
-	void Move(float atime)
+	void Move(float atime)//MOVE FUNCTION WITH MAX/MIN X
 	{
 
 		x += (speedx * atime);
@@ -370,8 +390,8 @@ public:
 		}
 	}
 };
-
-void Write(char writeme)
+//FILE I/O
+void Write(char writeme)//WRITING
 {
 	fstream fscores;
 	fscores.open("fscores.txt", ios_base::out);
@@ -379,14 +399,14 @@ void Write(char writeme)
 	fscores.close();
 }
 
-void Write(char *writeme)
+void Write(char *writeme)//WRITING OVERLOAD
 {
 	fstream fscores;
 	fscores.open("fscores.txt", ios_base::out);
 	fscores << writeme << " " << endl;
 	fscores.close();
 }
-void WriteOld(float writeme)
+void WriteOld(float writeme)//WRITING OLD SCORE
 {
 	fstream fscores;
 	fscores.open("foldscores.txt", ios_base::out);
@@ -394,7 +414,7 @@ void WriteOld(float writeme)
 	fscores.close();
 }
 
-char *Read()
+char *Read()//READING AS CHAR
 {
 	char ca[6];
 	fstream fscores;
@@ -404,7 +424,7 @@ char *Read()
 	return ca;
 }
 
-float ReadAsFloat()
+float ReadAsFloat()//READING AS FLOAT
 {
 	char ca[6];
 	float fa;
