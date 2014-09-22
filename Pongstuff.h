@@ -1,4 +1,9 @@
-class Vector
+#ifndef IOSTREAM
+#include <iostream>
+using namespace std;
+#endif
+#include <fstream>
+class Vector //VECTOR CLASS
 {
 private:
 	float x;
@@ -18,6 +23,10 @@ public:
 	float GetY()
 	{
 		return y;
+	}
+	float Length()
+	{
+		return sqrt((x * x) + (y * y));
 	}
 };
 
@@ -324,6 +333,11 @@ public:
 		speedx = ax;
 		speedy = ay;
 	}
+	Vector GetSpeed()
+	{
+		Vector va(speedx, speedy);
+		return va;
+	}
 	void Reverse()
 	{
 		speedy *= -1.05;
@@ -332,6 +346,10 @@ public:
 	float GetSpeedY()
 	{
 		return speedy;
+	}
+	float LengthSpeed()
+	{
+		return sqrt((speedx * speedx) + (speedy * speedy));
 	}
 	Box GetBox()
 	{
@@ -349,3 +367,48 @@ public:
 		}
 	}
 };
+
+void Write(char writeme)
+{
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::out);
+	fscores << writeme << " " << endl;
+	fscores.close();
+}
+
+void Write(char *writeme)
+{
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::out);
+	fscores << writeme << " " << endl;
+	fscores.close();
+}
+void WriteOld(float writeme)
+{
+	fstream fscores;
+	fscores.open("foldscores.txt", ios_base::out);
+	fscores << writeme << " " << endl;
+	fscores.close();
+}
+
+char *Read()
+{
+	char ca[6];
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::in);
+	fscores.getline(ca, 6);
+	fscores.close();
+	return ca;
+}
+
+float ReadAsFloat()
+{
+	char ca[6];
+	float fa;
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::in);
+	fscores.getline(ca,6);
+	fscores.close();
+	fa = atoi(ca);
+	return fa;
+}
