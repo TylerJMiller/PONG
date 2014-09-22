@@ -1,47 +1,47 @@
-﻿Build started 9/22/2014 11:48:49 AM.
+﻿Build started 9/22/2014 12:00:52 PM.
      1>Project "C:\Users\tyler.miller\Documents\GitHub\PONG\AIE Template.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I./ /I./include/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\\" /Fd"obj\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt source\main.cpp
          main.cpp
-     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(343): warning C4305: '*=' : truncation from 'double' to 'float'
-     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(344): warning C4305: '*=' : truncation from 'double' to 'float'
-     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(401): warning C4172: returning address of local variable or temporary
-     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(412): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(119): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(125): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(132): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(139): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(346): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(347): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(404): warning C4172: returning address of local variable or temporary
+     1>c:\users\tyler.miller\documents\github\pong\pongstuff.h(415): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(118): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(124): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(131): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(138): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(170): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(171): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(172): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(173): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(193): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(193): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(192): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(192): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(206): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(206): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(205): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(205): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(226): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(225): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(228): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(229): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(230): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(230): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(231): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(232): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(264): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(265): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(266): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(266): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(267): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(268): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(269): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(270): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(269): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(277): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(278): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(279): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(284): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(287): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(283): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(286): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(292): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\documents\github\pong\source\main.cpp(291): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\AIE Template_d.exe" /INCREMENTAL /NOLOGO /LIBPATH:./libs AIE_1st_Year_Framework_d.lib kernel32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"bin\AIE Template_d.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\AIE Template_d.lib" /MACHINE:X86 obj\main.obj
          AIE_1st_Year_Framework_d.lib(SOIL.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
@@ -77,4 +77,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.64
+Time Elapsed 00:00:01.61

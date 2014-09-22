@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Pongstuff.h"
 #include <cmath>
-
 using namespace std;
 
 //GLOBALS 

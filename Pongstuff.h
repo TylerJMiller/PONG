@@ -3,7 +3,8 @@
 using namespace std;
 #endif
 #include <fstream>
-class Vector //VECTOR CLASS
+
+class Vector		//VECTOR CLASS
 {
 private:
 	float x;
@@ -30,18 +31,19 @@ public:
 	}
 };
 
-Vector::Vector(float ax, float ay)
+Vector::Vector(float ax, float ay)		//VECTOR CONSTRUCTOR
 {
 	x = ax;
 	y = ay;
 }
 
-class Point
+class Point		//POINT CLASS
 {
 private:
 	float x;
 	float y;
 public:
+	Point();
 	Point(float, float);
 	void Set(float ax, float ay)
 	{
@@ -58,13 +60,13 @@ public:
 	}
 };
 
-Point::Point(float ax, float ay)
+Point::Point(float ax, float ay)		//POINT CONSTRUCTOR
 {
 	x = ax;
 	y = ay;
 }
 
-class Line
+class Line		//LINE CLASS
 {
 private:
 	float X1;
@@ -72,6 +74,9 @@ private:
 	float X2;
 	float Y2;
 public:
+
+	Line();
+	Line(Point, Point);
 	void Set(float startx, float starty, float endx, float endy)
 	{
 		X1 = startx;
@@ -79,8 +84,6 @@ public:
 		X2 = endx;
 		Y2 = endy;
 	}
-	Line();
-	Line(Point, Point);
 	void Set(Point a_point1, Point a_point2)
 	{
 		X1 = a_point1.GetX();
@@ -107,7 +110,7 @@ public:
 	}
 };
 
-Line::Line(Point a_point1, Point a_point2)
+Line::Line(Point a_point1, Point a_point2)		//LINE CONSTRUCTOR
 {
 	X1 = a_point1.GetX();
 	Y1 = a_point1.GetY();
@@ -116,7 +119,7 @@ Line::Line(Point a_point1, Point a_point2)
 }
 
 
-class Box
+class Box		//BOX CLASS
 {
 private:
 	float X1;
@@ -175,15 +178,15 @@ public:
 		return l;
 	}
 };
-
-Box::Box(Point p1, Point p2)
+		//BOX CONSTRUCTORS
+Box::Box(Point p1, Point p2)	//SET WITH POINT CLASS
 {
 	X1 = p1.GetX();
 	Y1 = p1.GetY();
 	X2 = p2.GetX();
 	Y2 = p2.GetY();
 }
-Box::Box(float ax1, float ay1, float ax2, float ay2)
+Box::Box(float ax1, float ay1, float ax2, float ay2)		//SET WITH FLOATS
 {
 	X1 = ax1;
 	Y1 = ay1;
@@ -191,24 +194,24 @@ Box::Box(float ax1, float ay1, float ax2, float ay2)
 	Y2 = ay2;
 }
 
-float Dot(Vector a, Vector b)
+float Dot(Vector a, Vector b)		//DOT PRODUCT OF TWO VECTORS
 {
 	return ((a.GetX() * b.GetX()) + (a.GetY() * b.GetY()));
 }
 
-bool CheckPointBox(Point p, Box b)
+bool CheckPointBox(Point p, Box b)		//POINT-BOX COLLISION
 {
 	if (p.GetX() > b.GetLeftBot().GetX() && p.GetX() < b.GetRightTop().GetX() && p.GetY() > b.GetLeftBot().GetY() && p.GetY() < b.GetRightTop().GetY())
 		return true;
 	return false;
 }
 
-bool CheckLineLine(Line l1, Line l2)				//DO SOON - NEEDED FOR ACCURACY
+bool CheckLineLine(Line l1, Line l2)				//NOT DONE YET BECAUSE I STOOPUD
 {
 	return false;
 }
 
-bool CheckBoxBox(Box b1, Box b2)
+bool CheckBoxBox(Box b1, Box b2)		//BOX-BOX COLLISION - ONLY CHECKS POINTS NOT LINES
 {
 	if (CheckPointBox(b1.GetLeftBot(), b2) || CheckPointBox(b1.GetRightBot(), b2) || CheckPointBox(b1.GetRightTop(), b2) || CheckPointBox(b1.GetLeftTop(), b2))
 		return true;
