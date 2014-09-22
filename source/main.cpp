@@ -2,20 +2,20 @@
 #include <iostream>
 #include "Pongstuff.h"
 #include <cmath>
-
 using namespace std;
 
-//GLOBALS 
+//GLOBALS AND CONSTANTS
 float fTime;
 const int screenWidth = 600, screenHeight = 400;
-void UpdateMainMenu(), LoadGame(), UpdateGameState(), EndGame(), errytime(), QuitGame();
+void UpdateMainMenu(), LoadGame(), UpdateGameState(), EndGame(), errytime(), QuitGame(); //DECLARING STATES AS NO-TYPE FUNCTIONS
 int score1 = 0, score2 = 0;
 char *wintext;
 bool displayscores = false;
 float endtime = 0;
 bool quitShit = false;
 int oldScore;
-enum GAMESTATES
+
+enum GAMESTATES		//STATES OF GAME
 {
 	MENU,
 	LOADGAME,
@@ -25,20 +25,26 @@ enum GAMESTATES
 };
 GAMESTATES CurrentState = MENU;
 
+//CLASSES BEING USED
 PLAYERBAR playerone, playertwo;
 BALL playball;
 
 int main( int argc, char* argv[] )
 {	
+	for (int i = 0; i >> 15; i++)	//4NORAISIN LOOP
+		i = 15;
+	//INITIAL CALLS
 	Initialise(screenWidth, screenHeight, false, "hipster poNg");
     SetBackgroundColour(SColour(0, 0, 0, 255));
 	AddFont("./fonts/arial.fnt");
     //Game Loop
     do
     {
-		if (IsKeyDown(GLFW_KEY_ESCAPE) || quitShit)
+		if (IsKeyDown(GLFW_KEY_ESCAPE) || quitShit)//DEBUG
 			return 0;
+		//CODE THAT MUST RUN EVERY TIME THE GAME LOOPS
 		errytime();
+		//GAME SWITCH
 		switch (CurrentState)
 		{
 		case MENU:
@@ -65,23 +71,27 @@ int main( int argc, char* argv[] )
 	
     return 0;
 }
-void errytime()
+void errytime()//CLEARING SCREEN, SETTING FONT, GETTING TIME SINCE LAST LOOP
 {
 	ClearScreen();
+
 	fTime = GetDeltaTime();
 
 	SetFont("./fonts/arial.fnt");
 }
 void UpdateMainMenu()
 {
+	//SCORE DISPLAY LOGIC
 	if (!displayscores)
 	{
+		//PLAY,SCORE,QUIT
 		DrawString("Press I to play", 60, 350, SColour(255, 255, 255, 255));
 		DrawString("Press K to Hi-Scores", 60, 250, SColour(255, 255, 255, 255));
 		DrawString("Press F to be a quitter", 60, 150, SColour(255, 255, 255, 255));
 	}
 	if (displayscores)
 	{
+		//CURRENT HI SCORE
 		DrawString("Highest speed is ", 60, 250, SColour(255, 255, 255, 255));
 		char a[6];
 		fstream fscores;
@@ -89,7 +99,7 @@ void UpdateMainMenu()
 		fscores.getline(a, 6);
 		fscores.close();
 		DrawString(a, 272, 250, SColour(255, 255, 255, 255));
-
+		//LAST HI SCORE (NOT SECOND HIGHEST)
 		DrawString("Old highest speed is ", 60, 200, SColour(255, 255, 255, 255));
 		char ca[6];
 		fstream foldscores;
@@ -97,10 +107,11 @@ void UpdateMainMenu()
 		foldscores.getline(ca, 6);
 		foldscores.close();
 		DrawString(ca, 317, 200, SColour(255, 255, 255, 255));
-
+		//RETURN INSTRUCTIONS
 		DrawString("Press L to return", 60, 150, SColour(255, 255, 255, 255));
 
 	}
+	//MAIN MENU BUTTON LOGIC
 	if (IsKeyDown(GLFW_KEY_I))
 		CurrentState = LOADGAME;
 	if (IsKeyDown(GLFW_KEY_K) && displayscores == false)
@@ -114,10 +125,11 @@ void UpdateMainMenu()
 	}
 }
 
-void LoadGame()
+void LoadGame()		//RUNS ONCE BEFORE SWITCHING TO GAME LOOP
 {
-	oldScore = ReadAsFloat();
+	oldScore = ReadAsFloat();//FOR DEBUG PURPOSES
 
+	//SETTING PLAYERS AND BALL INITIALS
 	playerone.SetLoc(0.5f * screenWidth, 50);
 	playerone.SetSize(100, 25);
 	playerone.SetSpeed(300);
@@ -139,26 +151,26 @@ void LoadGame()
 	playball.SetSprite(CreateSprite("./images/ball.png", playball.GetWidth(), playball.GetHeight(), true));
 }
 
-void UpdateGameState()
+void UpdateGameState()//RUNS EVER GAME LOOP
 {
-	if (IsKeyDown(GLFW_KEY_KP_4))
+	if (IsKeyDown(GLFW_KEY_KP_4))//END GAME BOT WINS
 	{
 		score1 = 9;
 	}
-	if (IsKeyDown(GLFW_KEY_KP_6))
+	if (IsKeyDown(GLFW_KEY_KP_6))//END GAME TOP WINS
 	{
 		score2 = 9;
 	}
-	if (IsKeyDown(GLFW_KEY_KP_9))
+	if (IsKeyDown(GLFW_KEY_KP_9))//SET GAME TO MAX SCORE WITHOUT WINNING
 	{
 		score1 = 8;
 		score2 = 8;
 	}
-	if (IsKeyDown(GLFW_KEY_KP_7))
+	if (IsKeyDown(GLFW_KEY_KP_7))//DEBUG
 	{
 		oldScore = 0;
 	}
-	if (IsKeyDown(GLFW_KEY_SPACE) && playball.GetSpeedY() == 0)
+	if (IsKeyDown(GLFW_KEY_SPACE) && playball.GetSpeedY() == 0)//SETTING BALL IN MOTION TO START PLAY
 	{
 		playball.SetSpeed(-200, 75);
 		if (score1 > score2)
@@ -166,15 +178,17 @@ void UpdateGameState()
 			playball.SetSpeed(-200, -75);
 		}
 	}
-	if (IsKeyDown(GLFW_KEY_S), IsKeyDown(GLFW_KEY_H), IsKeyDown(GLFW_KEY_I), IsKeyDown(GLFW_KEY_T))
+	if (IsKeyDown(GLFW_KEY_S), IsKeyDown(GLFW_KEY_H), IsKeyDown(GLFW_KEY_I), IsKeyDown(GLFW_KEY_T))//DEBUG
 	{
 		playball.SetSprite(CreateSprite("./images/dudeguy.png", playball.GetWidth(), playball.GetHeight(), true));
 		playerone.SetSprite(CreateSprite("./images/dudeguy.png", playerone.GetWidth(), playerone.GetHeight(), true));
 		playertwo.SetSprite(CreateSprite("./images/dudeguy.png", playertwo.GetWidth(), playertwo.GetHeight(), true));
 	}
+	//PLAYER AND BALL MOVEMENT
 	playerone.Move(fTime);
 	playertwo.Move(fTime);
 	playball.Move(fTime);
+	//BALL PADDLE COLLISION CHECK
 	if (CheckBoxBox(playball.GetBox(), playerone.GetBox()) && playball.GetSpeedY() < 0)
 	{
 		playball.Reverse();
@@ -183,6 +197,7 @@ void UpdateGameState()
 	{
 		playball.Reverse();
 	}
+	//CHECK IF SCORED, ADD TO SCORE, RESET GAME
 	if (CheckBoxBox(playball.GetBox(), Box(0, -100, 600, 0)))
 	{
 		playball.SetLoc(0.5f * screenWidth, 0.5f * screenHeight);
@@ -220,10 +235,10 @@ void UpdateGameState()
 		wintext = "TOP PLAYER WINS";
 		CurrentState = END;
 	}
-	//DRAWING STUFF
+	//MOVING SPRITES AND DRAWING SPRITES
 	if (playball.GetSpeedY() == 0)
 	{
-		DrawString("PRESS SPACE", 0.3f * screenWidth, 0.3f * screenHeight);
+		DrawString("PRESS SPACE", 0.3f * screenWidth, 0.3f * screenHeight);//PROMPT TO START PLAY
 	}
 	char scoreone[2], scoretwo[2];
 	itoa(score1, scoreone, 10);
@@ -239,9 +254,9 @@ void UpdateGameState()
 	DrawSprite(playertwo.GetSprite());
 }
 
-void EndGame()
+void EndGame()	//RESULTS SCREEN LOOP
 {
-	if (oldScore < ReadAsFloat())
+	if (oldScore < ReadAsFloat())//CHECKING IF NEW HI SCORE
 	{
 		DrawString("New Hi-Score!", 60, 350, SColour(255, 255, 255, 255));
 		DrawString("New Speed is ", 60, 300, SColour(255, 255, 255, 255));
@@ -259,6 +274,7 @@ void EndGame()
 		foldscores.close();
 		DrawString(ca, 235, 250, SColour(255, 255, 255, 255));
 	}
+	//COUNTDOWN BEFORE RETURNING TO MAIN MENU
 	char countDown[3];
 	endtime += fTime;
 	char scoreone[2], scoretwo[2];
@@ -276,12 +292,13 @@ void EndGame()
 		CurrentState = MENU;
 	}
 	DrawString(countDown, 0.5f * screenWidth, 0.3f * screenHeight);
-	DrawString(wintext, 0.3f * screenWidth, 0.5f * screenHeight, SColour(255, 255, 255, 255));
+	DrawString(wintext, 0.3f * screenWidth, 0.5f * screenHeight, SColour(255, 255, 255, 255));//DRAWING TEXT FOR WHO WON
 }
 
-void QuitGame()
+void QuitGame()//EXIT SCREEN LOOP
 {
-	DrawString(wintext, 0.3f * screenWidth, 0.5f * screenHeight, SColour(255, 255, 255, 255));
+	DrawString(wintext, 0.3f * screenWidth, 0.5f * screenHeight, SColour(255, 255, 255, 255));//DRAWING LOSE TEXT
+	//COUNTDOWN BEFORE EXITING GAME
 	char countDown[3];
 	endtime += fTime;
 	itoa(5 - (int)endtime, countDown, 10);
